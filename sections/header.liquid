@@ -146,10 +146,10 @@
 
   .header__logo-text {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--color-championship-white);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: -0.02em;
   }
 
   .header__logo-image {
@@ -183,13 +183,12 @@
 
   .header__nav-link {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 500;
-    color: var(--color-championship-white);
+    color: var(--color-white);
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: color var(--transition-base);
+    letter-spacing: -0.01em;
+    transition: color var(--transition-fast);
     position: relative;
   }
 
@@ -198,7 +197,7 @@
   }
 
   .header__nav-link--active {
-    color: var(--color-victory-red);
+    color: var(--color-teal-600);
   }
 
   .header__nav-link--active::after {
@@ -208,7 +207,8 @@
     left: 0;
     right: 0;
     height: 2px;
-    background-color: var(--color-victory-red);
+    background-color: var(--color-teal-600);
+    border-radius: var(--radius-full);
   }
 
   .header__actions {
@@ -228,7 +228,7 @@
   }
 
   .header__cart-link:hover {
-    color: var(--color-victory-red);
+    color: var(--color-teal-600);
   }
 
   .header__cart-icon {
@@ -249,9 +249,10 @@
     justify-content: center;
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--color-championship-white);
-    background-color: var(--color-victory-red);
-    border-radius: 10px;
+    color: var(--color-white);
+    background: var(--color-teal-600);
+    border-radius: var(--radius-full);
+    font-weight: 600;
   }
 
   .header__mobile-toggle {
@@ -269,7 +270,7 @@
   }
 
   .header__mobile-toggle:hover {
-    color: var(--color-victory-red);
+    color: var(--color-teal-600);
   }
 
   .header__mobile-toggle:focus-visible {
@@ -363,23 +364,22 @@
 
   .header__mobile-nav-link {
     display: block;
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-4) 0;
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 500;
-    color: var(--color-championship-white);
+    color: var(--color-white);
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: color var(--transition-base);
+    letter-spacing: -0.01em;
+    transition: color var(--transition-fast);
   }
 
   .header__mobile-nav-link:hover {
-    color: var(--color-victory-red);
+    color: var(--color-teal-600);
   }
 
   .header__mobile-nav-link--active {
-    color: var(--color-victory-red);
+    color: var(--color-teal-600);
   }
 </style>
 

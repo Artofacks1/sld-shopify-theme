@@ -1,8 +1,9 @@
 /* ============================================
-   SportsLiveDecals Theme - Base Styles
+   SportsLiveDecals Theme - Modern Design System
+   Inspired by Apple & Linear
    ============================================ */
 
-/* CSS Variables - Design System Color Palette */
+/* CSS Variables - Design System */
 :root {
   /* Primary Colors */
   --color-teal-600: #0d9488;
@@ -17,7 +18,7 @@
   --color-gray-300: #d1d5db;
   --color-white: #ffffff;
   
-  /* Legacy color mappings for compatibility */
+  /* Legacy color mappings */
   --color-gridiron-black: var(--color-gray-900);
   --color-championship-white: var(--color-white);
   --color-victory-red: var(--color-teal-600);
@@ -25,27 +26,76 @@
   --color-skyline-blue: var(--color-blue-600);
   --color-chrome-silver: var(--color-gray-300);
 
-  /* Typography */
-  --font-heading: 'Anton', sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  /* Typography - Modern System */
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Font Sizes - Fluid Typography */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+  --font-size-5xl: 3rem;     /* 48px */
+  --font-size-6xl: 3.75rem;  /* 60px */
 
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing - 8px base unit */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-16: 4rem;    /* 64px */
+  --spacing-20: 5rem;    /* 80px */
+  --spacing-24: 6rem;    /* 96px */
+
+  /* Legacy spacing for compatibility */
+  --spacing-xs: var(--spacing-2);
+  --spacing-sm: var(--spacing-4);
+  --spacing-md: var(--spacing-6);
+  --spacing-lg: var(--spacing-8);
+  --spacing-xl: var(--spacing-12);
+  --spacing-2xl: var(--spacing-16);
+
+  /* Border Radius - Modern rounded corners */
+  --radius-sm: 0.375rem;   /* 6px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;     /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-full: 9999px;
+
+  /* Shadows - Modern depth */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px rgba(13, 148, 136, 0.3);
+
+  /* Transitions - Smooth animations */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Breakpoints */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
-
-  /* Transitions */
-  --transition-base: 0.2s ease-in-out;
-  --transition-fast: 0.15s ease-in-out;
+  --breakpoint-2xl: 1536px;
 }
 
 /* ============================================
@@ -65,11 +115,13 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
   line-height: 1.6;
   color: var(--color-white);
   background-color: var(--color-gray-900);
@@ -77,7 +129,7 @@ body {
 }
 
 /* ============================================
-   Typography
+   Modern Typography
    ============================================ */
 
 h1,
@@ -87,46 +139,54 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: var(--font-weight-semibold);
   line-height: 1.2;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-4);
   color: var(--color-white);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: var(--font-weight-bold);
 }
 
 h3 {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: var(--font-weight-semibold);
 }
 
 h4 {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  font-weight: var(--font-weight-semibold);
 }
 
 h5 {
   font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: var(--font-weight-medium);
 }
 
 h6 {
   font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: var(--font-weight-medium);
 }
 
 p {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-4);
+  line-height: 1.7;
 }
 
 a {
   color: var(--color-teal-600);
   text-decoration: none;
-  transition: color var(--transition-base);
+  transition: color var(--transition-fast);
+  font-weight: var(--font-weight-medium);
 }
 
 a:hover {
@@ -136,41 +196,53 @@ a:hover {
 a:focus-visible {
   outline: 2px solid var(--color-teal-600);
   outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* ============================================
-   Buttons
+   Modern Buttons
    ============================================ */
 
 .button,
 button,
 input[type="submit"],
 input[type="button"] {
-  display: inline-block;
-  padding: var(--spacing-sm) var(--spacing-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
   font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--color-white);
-  background-color: var(--color-teal-600);
-  border: 2px solid var(--color-teal-600);
-  border-radius: 0;
+  background: var(--color-teal-600);
+  border: none;
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-base);
   -webkit-appearance: none;
   appearance: none;
+  box-shadow: var(--shadow-sm);
 }
 
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  background-color: var(--color-teal-700);
-  border-color: var(--color-teal-700);
-  color: var(--color-white);
+  background: var(--color-teal-700);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.button:active,
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 .button:focus-visible,
@@ -181,31 +253,66 @@ input[type="button"]:focus-visible {
   outline-offset: 2px;
 }
 
+/* Gradient Button */
+.button--gradient {
+  background: linear-gradient(135deg, var(--color-teal-600) 0%, var(--color-blue-600) 100%);
+  box-shadow: var(--shadow-glow);
+}
+
+.button--gradient:hover {
+  background: linear-gradient(135deg, var(--color-teal-700) 0%, var(--color-blue-700) 100%);
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+}
+
+/* Secondary Button */
 .button--secondary {
-  background-color: transparent;
+  background: transparent;
   color: var(--color-white);
-  border-color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-700);
+  box-shadow: none;
 }
 
 .button--secondary:hover {
-  background-color: var(--color-gray-800);
-  color: var(--color-white);
-  border-color: var(--color-gray-700);
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
+/* Outline Button */
 .button--outline {
-  background-color: transparent;
+  background: transparent;
   color: var(--color-teal-600);
-  border-color: var(--color-teal-600);
+  border: 1.5px solid var(--color-teal-600);
+  box-shadow: none;
 }
 
 .button--outline:hover {
-  background-color: var(--color-teal-600);
+  background: var(--color-teal-600);
   color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Rounded Button */
+.button--rounded {
+  border-radius: var(--radius-full);
+  padding: var(--spacing-3) var(--spacing-8);
+}
+
+/* Large Button */
+.button--large {
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-lg);
+}
+
+/* Small Button */
+.button--small {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
 }
 
 /* ============================================
-   Forms
+   Modern Forms
    ============================================ */
 
 input[type="text"],
@@ -217,16 +324,24 @@ input[type="password"],
 textarea,
 select {
   width: 100%;
-  padding: var(--spacing-sm);
+  padding: var(--spacing-3) var(--spacing-4);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5;
   color: var(--color-white);
   background-color: var(--color-gray-800);
   border: 1px solid var(--color-gray-700);
-  border-radius: 0;
-  transition: border-color var(--transition-base);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
   -webkit-appearance: none;
   appearance: none;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--color-gray-600);
 }
 
 input:focus,
@@ -234,12 +349,22 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--color-teal-600);
+  background-color: var(--color-gray-800);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
 }
 
 input::placeholder,
 textarea::placeholder {
   color: var(--color-gray-300);
   opacity: 1;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right var(--spacing-3) center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: var(--spacing-10);
 }
 
 /* ============================================
@@ -263,9 +388,11 @@ textarea::placeholder {
   top: -40px;
   left: 0;
   z-index: 9999;
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--color-teal-600);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-teal-600);
   color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
 }
 
 .skip-to-content-link:focus {
@@ -276,18 +403,24 @@ textarea::placeholder {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--spacing-4);
 }
 
 @media (min-width: 768px) {
   .container {
-    padding: 0 var(--spacing-lg);
+    padding: 0 var(--spacing-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-8);
   }
 }
 
 .grid {
   display: grid;
-  gap: var(--spacing-md);
+  gap: var(--spacing-6);
 }
 
 .grid--2-col {
@@ -335,8 +468,8 @@ textarea::placeholder {
 
 .content-for-layout {
   min-height: 60vh;
-  padding-top: var(--spacing-lg);
-  padding-bottom: var(--spacing-xl);
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-12);
 }
 
 /* ============================================
@@ -346,6 +479,45 @@ textarea::placeholder {
 .loading {
   opacity: 0.6;
   pointer-events: none;
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--color-gray-700);
+  border-top-color: var(--color-teal-600);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Modern Card Component
+   ============================================ */
+
+.card {
+  background: var(--color-gray-800);
+  border: 1px solid var(--color-gray-700);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-gray-600);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 /* ============================================
@@ -356,6 +528,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: var(--radius-md);
 }
 
 /* ============================================
@@ -387,4 +560,3 @@ img {
     display: none !important;
   }
 }
-
