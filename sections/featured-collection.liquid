@@ -8,9 +8,6 @@
 {%- if collection != blank and collection.products_count > 0 -%}
   <section class="featured-collection section">
     <div class="container">
-      {%- if label != blank -%}
-        <div class="featured-collection__label">{{ label }}</div>
-      {%- endif -%}
       {%- if title != blank -%}
         <div class="featured-collection__header">
           <h2 class="featured-collection__title">{{ title }}</h2>
@@ -55,15 +52,6 @@
     }
   }
 
-  .featured-collection__label {
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--color-gold);
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: var(--spacing-4);
-  }
 
   .featured-collection__header {
     text-align: center;

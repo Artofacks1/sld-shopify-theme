@@ -10,19 +10,10 @@
         <!-- Logo -->
         <div class="header__logo">
           <a href="{{ routes.root_url }}" class="header__logo-link" aria-label="{{ shop.name }}">
-            {%- if section.settings.logo != blank -%}
-              <img
-                src="{{ section.settings.logo | image_url: width: logo_width }}"
-                srcset="{{ section.settings.logo | image_url: width: logo_width }} 1x, {{ section.settings.logo | image_url: width: logo_width | times: 2 }} 2x"
-                alt="{{ section.settings.logo.alt | default: shop.name }}"
-                width="{{ logo_width }}"
-                height="{{ logo_width | divided_by: section.settings.logo.aspect_ratio | round }}"
-                class="header__logo-image"
-                loading="eager"
-              >
-            {%- else -%}
-              <span class="header__logo-text">{{ shop.name }}</span>
-            {%- endif -%}
+            <div class="header__logo-container">
+              <div class="header__logo-square">SLD</div>
+              <span class="header__logo-text">SPORTSLIVE DECALS</span>
+            </div>
           </a>
         </div>
 
@@ -47,15 +38,29 @@
 
         <!-- Right Side Actions -->
         <div class="header__actions">
+          <!-- Search Icon -->
+          <a href="{{ routes.search_url }}" class="header__action-link" aria-label="Search">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+              <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+          
+          <!-- Account Icon -->
+          <a href="{{ routes.account_url }}" class="header__action-link" aria-label="Account">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </a>
+          
           <!-- Cart Icon -->
           <a href="{{ routes.cart_url }}" class="header__cart-link" aria-label="Cart">
-            <span class="header__cart-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 4V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V4H20C20.5523 4 21 4.44772 21 5C21 5.55228 20.5523 6 20 6H19V19C19 20.1046 18.1046 21 17 21H7C5.89543 21 5 20.1046 5 19V6H4C3.44772 6 3 5.55228 3 5C3 4.44772 3.44772 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z" fill="currentColor"/>
-                <path d="M9 9V17H11V9H9Z" fill="currentColor"/>
-                <path d="M13 9V17H15V9H13Z" fill="currentColor"/>
-              </svg>
-            </span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 4V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V4H20C20.5523 4 21 4.44772 21 5C21 5.55228 20.5523 6 20 6H19V19C19 20.1046 18.1046 21 17 21H7C5.89543 21 5 20.1046 5 19V6H4C3.44772 6 3 5.55228 3 5C3 4.44772 3.44772 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z" fill="currentColor"/>
+              <path d="M9 9V17H11V9H9Z" fill="currentColor"/>
+              <path d="M13 9V17H15V9H13Z" fill="currentColor"/>
+            </svg>
             <span class="header__cart-count" data-cart-count>
               {%- if cart.item_count > 0 -%}
                 {{ cart.item_count }}
@@ -147,17 +152,36 @@
     text-decoration: none;
   }
 
-  .header__logo-text {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-white);
-    letter-spacing: -0.02em;
+  .header__logo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
   }
 
-  .header__logo-image {
-    display: block;
-    height: auto;
+  .header__logo-square {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    color: var(--color-gray-900);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .header__logo-text {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .header__nav {
@@ -186,17 +210,18 @@
 
   .header__nav-link {
     font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 500;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
     color: var(--color-white);
     text-decoration: none;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     transition: color var(--transition-fast);
     position: relative;
   }
 
   .header__nav-link:hover {
-    color: var(--color-victory-red);
+    color: var(--color-gold);
   }
 
   .header__nav-link--active {
@@ -217,7 +242,22 @@
   .header__actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-6);
+  }
+
+  .header__action-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__action-link:hover {
+    color: var(--color-gold);
   }
 
   .header__cart-link {
@@ -225,9 +265,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-championship-white);
+    color: var(--color-white);
     text-decoration: none;
-    transition: color var(--transition-base);
+    transition: color var(--transition-fast);
+    width: 24px;
+    height: 24px;
   }
 
   .header__cart-link:hover {
