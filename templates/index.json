@@ -3,23 +3,115 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "heading": "Custom Helmet Decals",
-        "subheading": "Elevate Your Team's Look",
-        "button_label": "Shop Now",
-        "button_link": "/collections/all"
+        "premium_badge": "PREMIUM BRANDING",
+        "heading_part1": "ELITE SPORTS",
+        "heading_part2": "DECALS & BRANDING",
+        "subheading": "Championship-grade helmet decals, vehicle wraps, and custom branding solutions. Built for teams that demand excellence.",
+        "button1_label": "SHOP COLLECTIONS",
+        "button1_link": "/collections/all",
+        "button2_label": "CUSTOM DESIGN SERVICE",
+        "button2_link": "/pages/custom-design"
       }
+    },
+    "category_grid": {
+      "type": "category-grid",
+      "settings": {
+        "label": "SHOP NOW",
+        "heading_part1": "CHOOSE YOUR",
+        "heading_part2": "CATEGORY"
+      },
+      "blocks": {
+        "all_products": {
+          "type": "category",
+          "settings": {
+            "title": "ALL PRODUCTS",
+            "icon": "all",
+            "is_active": true
+          }
+        },
+        "helmet_decals": {
+          "type": "category",
+          "settings": {
+            "title": "HELMET DECALS",
+            "icon": "helmet"
+          }
+        },
+        "flag_football": {
+          "type": "category",
+          "settings": {
+            "title": "FLAG FOOTBALL",
+            "icon": "flag"
+          }
+        },
+        "trophies": {
+          "type": "category",
+          "settings": {
+            "title": "TROPHIES",
+            "icon": "trophy"
+          }
+        },
+        "wraps": {
+          "type": "category",
+          "settings": {
+            "title": "WRAPS & BRANDING",
+            "icon": "wrap"
+          }
+        },
+        "custom_helmets": {
+          "type": "category",
+          "settings": {
+            "title": "CUSTOM HELMETS",
+            "icon": "custom"
+          }
+        }
+      },
+      "block_order": [
+        "all_products",
+        "helmet_decals",
+        "flag_football",
+        "trophies",
+        "wraps",
+        "custom_helmets"
+      ]
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured Products",
-        "collection": ""
+        "label": "ELITE PRODUCTS",
+        "title": "CHAMPIONSHIP GRADE",
+        "collection": "",
+        "products_to_show": 8
+      }
+    },
+    "features": {
+      "type": "features"
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "label": "TESTIMONIALS",
+        "heading_part1": "TRUSTED BY",
+        "heading_part2": "CHAMPIONS"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "JOIN THE ELITE",
+        "description": "Subscribe for exclusive deals, new product launches, and insider access to championship-grade decals before anyone else.",
+        "placeholder": "ENTER YOUR EMAIL",
+        "button_text": "SUBSCRIBE",
+        "disclaimer": "NO SPAM. UNSUBSCRIBE ANYTIME. CHAMPIONS ONLY."
       }
     }
   },
   "order": [
     "hero",
-    "featured_collection"
+    "category_grid",
+    "featured_collection",
+    "features",
+    "testimonials",
+    "newsletter"
   ]
 }
 

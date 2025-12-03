@@ -1,0 +1,234 @@
+{%- liquid
+  assign label = section.settings.label | default: 'TESTIMONIALS'
+  assign heading_part1 = section.settings.heading_part1 | default: 'TRUSTED BY'
+  assign heading_part2 = section.settings.heading_part2 | default: 'CHAMPIONS'
+-%}
+
+<section class="testimonials section">
+  <div class="container">
+    {%- if label != blank -%}
+      <div class="testimonials__label">{{ label }}</div>
+    {%- endif -%}
+    
+    <h2 class="testimonials__heading">
+      <span class="testimonials__heading-white">{{ heading_part1 }}</span>
+      <span class="testimonials__heading-gold">{{ heading_part2 }}</span>
+    </h2>
+
+    <div class="testimonials__grid">
+      {%- for block in section.blocks -%}
+        <div class="testimonials__item" {{ block.shopify_attributes }}>
+          <div class="testimonials__rating">
+            {%- for i in (1..5) -%}
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 0L12 7L19 7L13 11L15 19L10 15L5 19L7 11L1 7L8 7L10 0Z" fill="var(--color-gold)"/>
+              </svg>
+            {%- endfor -%}
+          </div>
+          <blockquote class="testimonials__quote">{{ block.settings.quote }}</blockquote>
+          <div class="testimonials__author">
+            <div class="testimonials__name">{{ block.settings.name }}</div>
+            <div class="testimonials__title">{{ block.settings.title }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: var(--spacing-12) 0;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials {
+      padding: var(--spacing-16) 0;
+    }
+  }
+
+  .testimonials__label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: var(--spacing-4);
+  }
+
+  .testimonials__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: var(--spacing-10);
+    line-height: 1.1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-2);
+  }
+
+  .testimonials__heading-white {
+    color: var(--color-white);
+  }
+
+  .testimonials__heading-gold {
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  @media (min-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .testimonials__item {
+    padding: var(--spacing-6);
+    background: rgba(31, 41, 55, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+  }
+
+  .testimonials__item:hover {
+    border-color: var(--color-gold);
+    background: rgba(31, 41, 55, 0.8);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .testimonials__rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: var(--spacing-4);
+  }
+
+  .testimonials__quote {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    color: var(--color-white);
+    margin: 0 0 var(--spacing-5) 0;
+    font-style: italic;
+  }
+
+  .testimonials__author {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-4);
+  }
+
+  .testimonials__name {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-1);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .testimonials__title {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-300);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section-testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label text",
+      "default": "TESTIMONIALS"
+    },
+    {
+      "type": "text",
+      "id": "heading_part1",
+      "label": "Heading part 1 (white)",
+      "default": "TRUSTED BY"
+    },
+    {
+      "type": "text",
+      "id": "heading_part2",
+      "label": "Heading part 2 (gold)",
+      "default": "CHAMPIONS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Outstanding quality! Our helmet decals have survived two full seasons without fading."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "COACH MIKE STEVENS"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "HEAD COACH, WILDCATS"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Outstanding quality! Our helmet decals have survived two full seasons without fading.",
+            "name": "COACH MIKE STEVENS",
+            "title": "HEAD COACH, WILDCATS"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The custom design service exceeded expectations. Professional team, flawless execution.",
+            "name": "SARAH JOHNSON",
+            "title": "ATHLETIC DIRECTOR"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "These decals look incredible under stadium lights. Made our championship run even more special.",
+            "name": "TEAM CAPTAIN RAIDERS",
+            "title": "HIGH SCHOOL FOOTBALL"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

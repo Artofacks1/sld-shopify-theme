@@ -5,11 +5,13 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__content">
-      <!-- About Column -->
-      <div class="footer__column">
-        <h3 class="footer__heading">{{ section.settings.about_heading | default: 'About' }}</h3>
+      <!-- Brand Column -->
+      <div class="footer__column footer__column--brand">
+        <div class="footer__logo">
+          <span class="footer__logo-text">{{ section.settings.brand_name | default: 'SLD SPORTSLIVE DECALS' }}</span>
+        </div>
         <div class="footer__text">
-          {{ section.settings.about_text }}
+          {{ section.settings.brand_description | default: 'Championship-grade sports decals and branding solutions for teams that demand excellence.' }}
         </div>
         {%- if section.settings.show_social_icons -%}
           <div class="footer__social">
@@ -20,13 +22,6 @@
                 </svg>
               </a>
             {%- endif -%}
-            {%- if settings.social_instagram_link != blank -%}
-              <a href="{{ settings.social_instagram_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </a>
-            {%- endif -%}
             {%- if settings.social_twitter_link != blank -%}
               <a href="{{ settings.social_twitter_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -34,120 +29,108 @@
                 </svg>
               </a>
             {%- endif -%}
+            {%- if settings.social_instagram_link != blank -%}
+              <a href="{{ settings.social_instagram_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+            {%- endif -%}
+            {%- if settings.social_pinterest_link != blank -%}
+              <a href="{{ settings.social_pinterest_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.219-.937 1.407-5.965 1.407-5.965s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.023 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+                </svg>
+              </a>
+            {%- endif -%}
           </div>
         {%- endif -%}
       </div>
 
-      <!-- Customer Service Column -->
+      <!-- Products Column -->
       <div class="footer__column">
-        <h3 class="footer__heading">{{ section.settings.customer_service_heading | default: 'Customer Service' }}</h3>
+        <h3 class="footer__heading">{{ section.settings.products_heading | default: 'PRODUCTS' }}</h3>
         <ul class="footer__links">
-          {%- if section.settings.customer_service_link_1_label != blank -%}
-            <li class="footer__link-item">
-              <a href="{{ section.settings.customer_service_link_1_url }}" class="footer__link">
-                {{ section.settings.customer_service_link_1_label }}
-              </a>
-            </li>
-          {%- endif -%}
-          {%- if section.settings.customer_service_link_2_label != blank -%}
-            <li class="footer__link-item">
-              <a href="{{ section.settings.customer_service_link_2_url }}" class="footer__link">
-                {{ section.settings.customer_service_link_2_label }}
-              </a>
-            </li>
-          {%- endif -%}
-          {%- if section.settings.customer_service_link_3_label != blank -%}
-            <li class="footer__link-item">
-              <a href="{{ section.settings.customer_service_link_3_url }}" class="footer__link">
-                {{ section.settings.customer_service_link_3_label }}
-              </a>
-            </li>
-          {%- endif -%}
-          {%- if section.settings.customer_service_link_4_label != blank -%}
-            <li class="footer__link-item">
-              <a href="{{ section.settings.customer_service_link_4_url }}" class="footer__link">
-                {{ section.settings.customer_service_link_4_label }}
-              </a>
-            </li>
-          {%- endif -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'product_link' -%}
+              <li class="footer__link-item">
+                <a href="{{ block.settings.url }}" class="footer__link" {{ block.shopify_attributes }}>
+                  {{ block.settings.label }}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <!-- Company Column -->
+      <div class="footer__column">
+        <h3 class="footer__heading">{{ section.settings.company_heading | default: 'COMPANY' }}</h3>
+        <ul class="footer__links">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'company_link' -%}
+              <li class="footer__link-item">
+                <a href="{{ block.settings.url }}" class="footer__link" {{ block.shopify_attributes }}>
+                  {{ block.settings.label }}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
         </ul>
       </div>
 
       <!-- Contact Column -->
       <div class="footer__column">
-        <h3 class="footer__heading">{{ section.settings.contact_heading | default: 'Contact' }}</h3>
+        <h3 class="footer__heading">{{ section.settings.contact_heading | default: 'CONTACT' }}</h3>
         <div class="footer__contact">
-          {%- if section.settings.contact_email != blank -%}
-            <p class="footer__contact-item">
-              <a href="mailto:{{ section.settings.contact_email }}" class="footer__link">
-                {{ section.settings.contact_email }}
-              </a>
-            </p>
+          {%- if section.settings.contact_address != blank -%}
+            <div class="footer__contact-item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer__contact-icon">
+                <path d="M10 10C11.3807 10 12.5 8.88071 12.5 7.5C12.5 6.11929 11.3807 5 10 5C8.61929 5 7.5 6.11929 7.5 7.5C7.5 8.88071 8.61929 10 10 10Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 18C14 14 18 10.4183 18 7.5C18 4.58172 14.4183 2 10 2C5.58172 2 2 4.58172 2 7.5C2 10.4183 6 14 10 18Z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span>{{ section.settings.contact_address }}</span>
+            </div>
           {%- endif -%}
           {%- if section.settings.contact_phone != blank -%}
-            <p class="footer__contact-item">
+            <div class="footer__contact-item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer__contact-icon">
+                <path d="M18 14V17C18 17.5304 17.7893 18.0391 17.4142 18.4142C17.0391 18.7893 16.5304 19 16 19C6.61 19 1 13.39 1 4C1 3.46957 1.21071 2.96086 1.58579 2.58579C1.96086 2.21071 2.46957 2 3 2H6C6.53043 2 7.03914 2.21071 7.41421 2.58579C7.78929 2.96086 8 3.46957 8 4V7C8 7.53043 7.78929 8 7.41421 8.41421C7.03914 8.82843 6.53043 9 6 9H4C4 12 7 15 10 15V13C10 12.4696 10.2107 11.9609 10.5858 11.5858C10.9609 11.2107 11.4696 11 12 11H15C15.5304 11 16.0391 11.2107 16.4142 11.5858C16.7893 11.9609 17 12.4696 17 13V16C17 16.5304 16.7893 17 16.4142 17.4142C16.0391 17.8284 15.5304 18 15 18H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
               <a href="tel:{{ section.settings.contact_phone }}" class="footer__link">
                 {{ section.settings.contact_phone }}
               </a>
-            </p>
+            </div>
           {%- endif -%}
-          {%- if section.settings.contact_address != blank -%}
-            <p class="footer__contact-item">
-              {{ section.settings.contact_address }}
-            </p>
+          {%- if section.settings.contact_email != blank -%}
+            <div class="footer__contact-item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer__contact-icon">
+                <path d="M2 5L10 11L18 5M2 5H18V15H2V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <a href="mailto:{{ section.settings.contact_email }}" class="footer__link">
+                {{ section.settings.contact_email }}
+              </a>
+            </div>
           {%- endif -%}
         </div>
       </div>
 
-      <!-- Newsletter Column -->
-      {%- if newsletter_enabled -%}
-        <div class="footer__column">
-          <h3 class="footer__heading">{{ section.settings.newsletter_heading | default: 'Newsletter' }}</h3>
-          <p class="footer__text">{{ section.settings.newsletter_text }}</p>
-          {%- form 'customer', class: 'footer__newsletter-form' -%}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-            <div class="footer__newsletter-input-wrapper">
-              <input
-                type="email"
-                name="contact[email]"
-                class="footer__newsletter-input"
-                value="{% if customer %}{{ customer.email }}{% endif %}"
-                placeholder="{{ section.settings.newsletter_placeholder | default: 'Enter your email' }}"
-                aria-label="{{ section.settings.newsletter_placeholder | default: 'Enter your email' }}"
-                required
-              >
-              <button type="submit" class="footer__newsletter-button button">
-                {{ section.settings.newsletter_button_text | default: 'Subscribe' }}
-              </button>
-            </div>
-            {%- if form.posted_successfully? -%}
-              <p class="footer__newsletter-success">
-                {{ 'newsletter.success' | t | default: 'Thanks for subscribing!' }}
-              </p>
-            {%- endif -%}
-            {%- if form.errors -%}
-              <p class="footer__newsletter-error">
-                {{ form.errors | default_errors }}
-              </p>
-            {%- endif -%}
-          {%- endform -%}
-        </div>
-      {%- endif -%}
     </div>
 
     <!-- Footer Bottom -->
     <div class="footer__bottom">
       <div class="footer__copyright">
-        <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_text }}</p>
+        <p>&copy; {{ 'now' | date: '%Y' }} {{ section.settings.copyright_text | default: 'SPORTSLIVE DECALS. ALL RIGHTS RESERVED.' }}</p>
       </div>
-      <div class="footer__legal">
-        {%- if section.settings.show_payment_icons -%}
-          <div class="footer__payment-icons">
-            {%- assign payment_types = 'visa,master,american_express,paypal,apple_pay' | split: ',' -%}
-            {%- for type in payment_types -%}
-              <span class="footer__payment-icon" aria-label="{{ type }}">{{ type | capitalize }}</span>
-            {%- endfor -%}
-          </div>
+      <div class="footer__legal-links">
+        {%- if section.settings.privacy_policy_url != blank -%}
+          <a href="{{ section.settings.privacy_policy_url }}" class="footer__legal-link">PRIVACY POLICY</a>
+        {%- endif -%}
+        {%- if section.settings.terms_url != blank -%}
+          <a href="{{ section.settings.terms_url }}" class="footer__legal-link">TERMS OF SERVICE</a>
+        {%- endif -%}
+        {%- if section.settings.shipping_policy_url != blank -%}
+          <a href="{{ section.settings.shipping_policy_url }}" class="footer__legal-link">SHIPPING POLICY</a>
         {%- endif -%}
       </div>
     </div>
@@ -156,28 +139,23 @@
 
 <style>
   .footer {
-    background-color: var(--color-gridiron-black);
-    border-top: 1px solid var(--color-chrome-silver);
-    padding: var(--spacing-xl) 0 var(--spacing-lg);
-    margin-top: var(--spacing-2xl);
+    background-color: var(--color-gray-900);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-12) 0 var(--spacing-6);
+    margin-top: var(--spacing-16);
   }
 
   .footer__content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
+    gap: var(--spacing-10);
+    margin-bottom: var(--spacing-10);
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     .footer__content {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .footer__content {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: var(--spacing-8);
     }
   }
 
@@ -186,13 +164,25 @@
     flex-direction: column;
   }
 
+  .footer__logo-text {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-4);
+    display: block;
+  }
+
   .footer__heading {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
-    color: var(--color-championship-white);
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-4);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
   }
 
   .footer__text {
@@ -213,14 +203,16 @@
   }
 
   .footer__link {
-    font-size: 0.9375rem;
-    color: var(--color-chrome-silver);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-300);
     text-decoration: none;
     transition: color var(--transition-base);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .footer__link:hover {
-    color: var(--color-victory-red);
+    color: var(--color-gold);
   }
 
   .footer__contact {
@@ -230,9 +222,22 @@
   }
 
   .footer__contact-item {
-    font-size: 0.9375rem;
-    color: var(--color-chrome-silver);
-    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-300);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .footer__contact-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer__contact-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-gold);
   }
 
   .footer__social {
@@ -241,18 +246,24 @@
     margin-top: var(--spacing-md);
   }
 
+  .footer__social {
+    display: flex;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-6);
+  }
+
   .footer__social-link {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-    color: var(--color-chrome-silver);
+    color: var(--color-white);
     transition: color var(--transition-base);
   }
 
   .footer__social-link:hover {
-    color: var(--color-victory-red);
+    color: var(--color-gold);
   }
 
   .footer__newsletter-form {
@@ -299,9 +310,9 @@
   .footer__bottom {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid rgba(200, 204, 208, 0.2);
+    gap: var(--spacing-4);
+    padding-top: var(--spacing-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
   }
 
@@ -315,8 +326,36 @@
   }
 
   .footer__copyright {
-    font-size: 0.875rem;
-    color: var(--color-chrome-silver);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-300);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .footer__legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer__legal-links {
+      justify-content: flex-end;
+    }
+  }
+
+  .footer__legal-link {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-300);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+  }
+
+  .footer__legal-link:hover {
+    color: var(--color-gold);
   }
 
   .footer__payment-icons {
@@ -347,18 +386,19 @@
   "settings": [
     {
       "type": "header",
-      "content": "About Section"
+      "content": "Brand Section"
     },
     {
       "type": "text",
-      "id": "about_heading",
-      "label": "About heading",
-      "default": "About"
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "SLD SPORTSLIVE DECALS"
     },
     {
-      "type": "richtext",
-      "id": "about_text",
-      "label": "About text"
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand description",
+      "default": "Championship-grade sports decals and branding solutions for teams that demand excellence."
     },
     {
       "type": "checkbox",
@@ -368,53 +408,23 @@
     },
     {
       "type": "header",
-      "content": "Customer Service Section"
+      "content": "Products Section"
     },
     {
       "type": "text",
-      "id": "customer_service_heading",
-      "label": "Customer Service heading",
-      "default": "Customer Service"
+      "id": "products_heading",
+      "label": "Products heading",
+      "default": "PRODUCTS"
+    },
+    {
+      "type": "header",
+      "content": "Company Section"
     },
     {
       "type": "text",
-      "id": "customer_service_link_1_label",
-      "label": "Link 1 label"
-    },
-    {
-      "type": "url",
-      "id": "customer_service_link_1_url",
-      "label": "Link 1 URL"
-    },
-    {
-      "type": "text",
-      "id": "customer_service_link_2_label",
-      "label": "Link 2 label"
-    },
-    {
-      "type": "url",
-      "id": "customer_service_link_2_url",
-      "label": "Link 2 URL"
-    },
-    {
-      "type": "text",
-      "id": "customer_service_link_3_label",
-      "label": "Link 3 label"
-    },
-    {
-      "type": "url",
-      "id": "customer_service_link_3_url",
-      "label": "Link 3 URL"
-    },
-    {
-      "type": "text",
-      "id": "customer_service_link_4_label",
-      "label": "Link 4 label"
-    },
-    {
-      "type": "url",
-      "id": "customer_service_link_4_url",
-      "label": "Link 4 URL"
+      "id": "company_heading",
+      "label": "Company heading",
+      "default": "COMPANY"
     },
     {
       "type": "header",
@@ -424,56 +434,25 @@
       "type": "text",
       "id": "contact_heading",
       "label": "Contact heading",
-      "default": "Contact"
-    },
-    {
-      "type": "text",
-      "id": "contact_email",
-      "label": "Email address"
-    },
-    {
-      "type": "text",
-      "id": "contact_phone",
-      "label": "Phone number"
+      "default": "CONTACT"
     },
     {
       "type": "textarea",
       "id": "contact_address",
-      "label": "Address"
-    },
-    {
-      "type": "header",
-      "content": "Newsletter Section"
-    },
-    {
-      "type": "checkbox",
-      "id": "newsletter_enable",
-      "label": "Enable newsletter",
-      "default": true
+      "label": "Address",
+      "default": "123 Champion Drive, Sports City, SC 12345"
     },
     {
       "type": "text",
-      "id": "newsletter_heading",
-      "label": "Newsletter heading",
-      "default": "Newsletter"
+      "id": "contact_phone",
+      "label": "Phone number",
+      "default": "+1 (123) 456-7890"
     },
     {
       "type": "text",
-      "id": "newsletter_text",
-      "label": "Newsletter text",
-      "default": "Subscribe to get special offers and updates."
-    },
-    {
-      "type": "text",
-      "id": "newsletter_placeholder",
-      "label": "Email placeholder",
-      "default": "Enter your email"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_button_text",
-      "label": "Button text",
-      "default": "Subscribe"
+      "id": "contact_email",
+      "label": "Email address",
+      "default": "info@sportslivedecals.com"
     },
     {
       "type": "header",
@@ -483,13 +462,154 @@
       "type": "text",
       "id": "copyright_text",
       "label": "Copyright text",
-      "default": "All rights reserved."
+      "default": "SPORTSLIVE DECALS. ALL RIGHTS RESERVED."
     },
     {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "Show payment icons",
-      "default": true
+      "type": "url",
+      "id": "privacy_policy_url",
+      "label": "Privacy Policy URL"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms of Service URL"
+    },
+    {
+      "type": "url",
+      "id": "shipping_policy_url",
+      "label": "Shipping Policy URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_link",
+      "name": "Product Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "company_link",
+      "name": "Company Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Football Decals",
+            "url": "/collections/football"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Baseball Decals",
+            "url": "/collections/baseball"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Lacrosse Decals",
+            "url": "/collections/lacrosse"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Hockey Decals",
+            "url": "/collections/hockey"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Flag Football",
+            "url": "/collections/flag-football"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Trophies",
+            "url": "/collections/trophies"
+          }
+        },
+        {
+          "type": "company_link",
+          "settings": {
+            "label": "About Us",
+            "url": "/pages/about"
+          }
+        },
+        {
+          "type": "company_link",
+          "settings": {
+            "label": "Custom Design",
+            "url": "/pages/custom-design"
+          }
+        },
+        {
+          "type": "company_link",
+          "settings": {
+            "label": "Blog",
+            "url": "/blogs/news"
+          }
+        },
+        {
+          "type": "company_link",
+          "settings": {
+            "label": "Testimonials",
+            "url": "/pages/testimonials"
+          }
+        },
+        {
+          "type": "company_link",
+          "settings": {
+            "label": "Style Guide",
+            "url": "/pages/style-guide"
+          }
+        },
+        {
+          "type": "company_link",
+          "settings": {
+            "label": "Contact",
+            "url": "/pages/contact"
+          }
+        },
+        {
+          "type": "company_link",
+          "settings": {
+            "label": "Careers",
+            "url": "/pages/careers"
+          }
+        }
+      ]
     }
   ]
 }
