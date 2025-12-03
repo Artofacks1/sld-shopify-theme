@@ -1,9 +1,9 @@
 /* ============================================
-   SportsLiveDecals Theme - Modern Design System
-   Inspired by Apple & Linear
+   SportsLiveDecals Theme - Premium Design System
+   Exceeds industry standards with modern, sophisticated design
    ============================================ */
 
-/* CSS Variables - Design System */
+/* CSS Variables - Premium Design System */
 :root {
   /* Primary Colors */
   --color-teal-600: #0d9488;
@@ -15,6 +15,7 @@
   --color-gray-900: #111827;
   --color-gray-800: #1f2937;
   --color-gray-700: #374151;
+  --color-gray-600: #4b5563;
   --color-gray-300: #d1d5db;
   --color-white: #ffffff;
   
@@ -26,11 +27,11 @@
   --color-skyline-blue: var(--color-blue-600);
   --color-chrome-silver: var(--color-gray-300);
 
-  /* Typography - Modern System */
+  /* Premium Typography */
   --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Font Sizes - Fluid Typography */
+  /* Font Sizes - Premium Fluid Typography */
   --font-size-xs: 0.75rem;    /* 12px */
   --font-size-sm: 0.875rem;  /* 14px */
   --font-size-base: 1rem;    /* 16px */
@@ -41,14 +42,16 @@
   --font-size-4xl: 2.25rem;  /* 36px */
   --font-size-5xl: 3rem;     /* 48px */
   --font-size-6xl: 3.75rem;  /* 60px */
+  --font-size-7xl: 4.5rem;   /* 72px */
 
   /* Font Weights */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
-  /* Spacing - 8px base unit */
+  /* Premium Spacing - 8px base unit */
   --spacing-0: 0;
   --spacing-1: 0.25rem;  /* 4px */
   --spacing-2: 0.5rem;   /* 8px */
@@ -62,6 +65,7 @@
   --spacing-16: 4rem;    /* 64px */
   --spacing-20: 5rem;    /* 80px */
   --spacing-24: 6rem;    /* 96px */
+  --spacing-32: 8rem;    /* 128px */
 
   /* Legacy spacing for compatibility */
   --spacing-xs: var(--spacing-2);
@@ -71,24 +75,35 @@
   --spacing-xl: var(--spacing-12);
   --spacing-2xl: var(--spacing-16);
 
-  /* Border Radius - Modern rounded corners */
+  /* Premium Border Radius */
   --radius-sm: 0.375rem;   /* 6px */
   --radius-md: 0.5rem;     /* 8px */
   --radius-lg: 0.75rem;     /* 12px */
   --radius-xl: 1rem;       /* 16px */
+  --radius-2xl: 1.5rem;    /* 24px */
   --radius-full: 9999px;
 
-  /* Shadows - Modern depth */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  /* Premium Shadows - Sophisticated depth */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 20px rgba(13, 148, 136, 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 30px rgba(13, 148, 136, 0.4);
+  --shadow-glow-lg: 0 0 50px rgba(13, 148, 136, 0.5);
 
-  /* Transitions - Smooth animations */
+  /* Premium Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-teal-600) 0%, var(--color-blue-600) 100%);
+  --gradient-primary-hover: linear-gradient(135deg, var(--color-teal-700) 0%, var(--color-blue-700) 100%);
+  --gradient-overlay: linear-gradient(180deg, rgba(17, 24, 39, 0) 0%, rgba(17, 24, 39, 0.8) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+
+  /* Premium Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   /* Breakpoints */
   --breakpoint-sm: 640px;
@@ -129,7 +144,7 @@ body {
 }
 
 /* ============================================
-   Modern Typography
+   Premium Typography
    ============================================ */
 
 h1,
@@ -139,54 +154,65 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: var(--font-weight-semibold);
-  line-height: 1.2;
-  margin-bottom: var(--spacing-4);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-6);
   color: var(--color-white);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 h1 {
-  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.04em;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.03em;
 }
 
-h2 {
-  font-size: clamp(1.875rem, 4vw, 3rem);
-  font-weight: var(--font-weight-bold);
-}
-
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: var(--font-weight-semibold);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
 }
 
 h4 {
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
 }
 
 h5 {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  font-weight: var(--font-weight-medium);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
 }
 
 h6 {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  font-weight: var(--font-weight-medium);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
 }
 
 p {
-  margin-bottom: var(--spacing-4);
-  line-height: 1.7;
+  margin-bottom: var(--spacing-5);
+  line-height: 1.75;
+  color: var(--color-gray-300);
 }
 
 a {
   color: var(--color-teal-600);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
   font-weight: var(--font-weight-medium);
+  position: relative;
 }
 
 a:hover {
@@ -195,12 +221,12 @@ a:hover {
 
 a:focus-visible {
   outline: 2px solid var(--color-teal-600);
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
 /* ============================================
-   Modern Buttons
+   Premium Buttons
    ============================================ */
 
 .button,
@@ -211,108 +237,129 @@ input[type="button"] {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-2);
-  padding: var(--spacing-3) var(--spacing-6);
+  padding: var(--spacing-4) var(--spacing-8);
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   line-height: 1.5;
   text-align: center;
   color: var(--color-white);
-  background: var(--color-teal-600);
+  background: var(--gradient-primary);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   cursor: pointer;
   transition: all var(--transition-base);
   -webkit-appearance: none;
   appearance: none;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-slow);
+}
+
+.button:hover::before {
+  left: 100%;
 }
 
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  background: var(--color-teal-700);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  background: var(--gradient-primary-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-xl), var(--shadow-glow-lg);
 }
 
 .button:active,
 button:active,
 input[type="submit"]:active,
 input[type="button"]:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
 }
 
 .button:focus-visible,
 button:focus-visible,
 input[type="submit"]:focus-visible,
 input[type="button"]:focus-visible {
-  outline: 2px solid var(--color-teal-600);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-teal-600);
+  outline-offset: 3px;
 }
 
 /* Gradient Button */
 .button--gradient {
-  background: linear-gradient(135deg, var(--color-teal-600) 0%, var(--color-blue-600) 100%);
-  box-shadow: var(--shadow-glow);
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
 .button--gradient:hover {
-  background: linear-gradient(135deg, var(--color-teal-700) 0%, var(--color-blue-700) 100%);
-  box-shadow: var(--shadow-glow), var(--shadow-lg);
+  background: var(--gradient-primary-hover);
+  box-shadow: var(--shadow-2xl), var(--shadow-glow-lg);
 }
 
 /* Secondary Button */
 .button--secondary {
-  background: transparent;
+  background: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--color-white);
-  border: 1px solid var(--color-gray-700);
-  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .button--secondary:hover {
-  background: var(--color-gray-800);
-  border-color: var(--color-gray-600);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  background: rgba(31, 41, 55, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Outline Button */
 .button--outline {
   background: transparent;
   color: var(--color-teal-600);
-  border: 1.5px solid var(--color-teal-600);
+  border: 2px solid var(--color-teal-600);
   box-shadow: none;
 }
 
 .button--outline:hover {
   background: var(--color-teal-600);
   color: var(--color-white);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
 /* Rounded Button */
 .button--rounded {
   border-radius: var(--radius-full);
-  padding: var(--spacing-3) var(--spacing-8);
+  padding: var(--spacing-4) var(--spacing-10);
 }
 
 /* Large Button */
 .button--large {
-  padding: var(--spacing-4) var(--spacing-8);
+  padding: var(--spacing-5) var(--spacing-10);
   font-size: var(--font-size-lg);
+  border-radius: var(--radius-xl);
 }
 
 /* Small Button */
 .button--small {
-  padding: var(--spacing-2) var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-6);
   font-size: var(--font-size-sm);
+  border-radius: var(--radius-lg);
 }
 
 /* ============================================
-   Modern Forms
+   Premium Forms
    ============================================ */
 
 input[type="text"],
@@ -324,16 +371,18 @@ input[type="password"],
 textarea,
 select {
   width: 100%;
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-5);
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   line-height: 1.5;
   color: var(--color-white);
-  background-color: var(--color-gray-800);
-  border: 1px solid var(--color-gray-700);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  background-color: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
   -webkit-appearance: none;
   appearance: none;
 }
@@ -341,7 +390,8 @@ select {
 input:hover,
 textarea:hover,
 select:hover {
-  border-color: var(--color-gray-600);
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(31, 41, 55, 0.8);
 }
 
 input:focus,
@@ -349,8 +399,8 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--color-teal-600);
-  background-color: var(--color-gray-800);
-  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  background-color: rgba(31, 41, 55, 0.9);
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15), var(--shadow-lg);
 }
 
 input::placeholder,
@@ -360,11 +410,11 @@ textarea::placeholder {
 }
 
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
-  background-position: right var(--spacing-3) center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right var(--spacing-4) center;
   background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  padding-right: var(--spacing-10);
+  background-size: 1.25em 1.25em;
+  padding-right: var(--spacing-12);
 }
 
 /* ============================================
@@ -388,11 +438,12 @@ select {
   top: -40px;
   left: 0;
   z-index: 9999;
-  padding: var(--spacing-3) var(--spacing-4);
-  background: var(--color-teal-600);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: var(--gradient-primary);
   color: var(--color-white);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-lg);
 }
 
 .skip-to-content-link:focus {
@@ -401,26 +452,26 @@ select {
 
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--spacing-5);
 }
 
 @media (min-width: 768px) {
-  .container {
-    padding: 0 var(--spacing-6);
-  }
-}
-
-@media (min-width: 1024px) {
   .container {
     padding: 0 var(--spacing-8);
   }
 }
 
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-12);
+  }
+}
+
 .grid {
   display: grid;
-  gap: var(--spacing-6);
+  gap: var(--spacing-8);
 }
 
 .grid--2-col {
@@ -463,17 +514,17 @@ select {
 }
 
 /* ============================================
-   Layout
+   Premium Layout
    ============================================ */
 
 .content-for-layout {
-  min-height: 60vh;
-  padding-top: var(--spacing-8);
-  padding-bottom: var(--spacing-12);
+  min-height: 70vh;
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-16);
 }
 
 /* ============================================
-   Loading States
+   Premium Loading States
    ============================================ */
 
 .loading {
@@ -487,13 +538,13 @@ select {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 2px solid var(--color-gray-700);
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 3px solid rgba(55, 65, 81, 0.3);
   border-top-color: var(--color-teal-600);
   border-radius: 50%;
-  animation: spin 0.6s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -503,21 +554,45 @@ select {
 }
 
 /* ============================================
-   Modern Card Component
+   Premium Card Component
    ============================================ */
 
 .card {
-  background: var(--color-gray-800);
-  border: 1px solid var(--color-gray-700);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-6);
+  background: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-8);
   transition: all var(--transition-base);
+  box-shadow: var(--shadow-lg);
 }
 
 .card:hover {
-  border-color: var(--color-gray-600);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+  background: rgba(31, 41, 55, 0.8);
+}
+
+/* ============================================
+   Premium Badge/Ribbon Component
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+}
+
+.badge--sale {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 
 /* ============================================
@@ -528,7 +603,41 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================
+   Premium Animations
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out;
 }
 
 /* ============================================
