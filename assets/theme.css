@@ -530,7 +530,20 @@ select {
 .content-for-layout {
   min-height: 70vh;
   padding-top: var(--spacing-12);
-  padding-bottom: var(--spacing-16);
+  padding-bottom: var(--spacing-12);
+}
+
+/* Reduced spacing per Figma guide */
+.section {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: var(--spacing-16);
+    padding-bottom: var(--spacing-16);
+  }
 }
 
 /* ============================================

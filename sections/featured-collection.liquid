@@ -32,7 +32,13 @@
 
 <style>
   .featured-collection {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-12) 0;
+  }
+
+  @media (min-width: 768px) {
+    .featured-collection {
+      padding: var(--spacing-16) 0;
+    }
   }
 
   .featured-collection__header {
@@ -42,11 +48,18 @@
 
   .featured-collection__title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    color: var(--color-championship-white);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: -0.02em;
     margin: 0;
+  }
+
+  .featured-collection__title .gold-text {
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .featured-collection__grid {
