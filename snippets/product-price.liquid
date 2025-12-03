@@ -1,0 +1,66 @@
+{%- liquid
+  assign product = product | default: product_card_product
+  assign variant = variant | default: product.selected_or_first_available_variant
+  assign price = variant.price
+  assign compare_at_price = variant.compare_at_price
+  assign available = variant.available
+-%}
+
+<div class="product-price">
+  {%- if available -%}
+    <span class="product-price__current" data-price="{{ price }}">
+      {{ price | money }}
+    </span>
+    {%- if compare_at_price > price -%}
+      <span class="product-price__compare" data-compare-price="{{ compare_at_price }}">
+        {{ compare_at_price | money }}
+      </span>
+      <span class="product-price__sale-badge">
+        {{ compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round }}% OFF
+      </span>
+    {%- endif -%}
+  {%- else -%}
+    <span class="product-price__sold-out">Sold out</span>
+  {%- endif -%}
+</div>
+
+<style>
+  .product-price {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+  }
+
+  .product-price__current {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-championship-white);
+  }
+
+  .product-price__compare {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-chrome-silver);
+    text-decoration: line-through;
+  }
+
+  .product-price__sale-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-victory-red);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .product-price__sold-out {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-chrome-silver);
+    text-transform: uppercase;
+  }
+</style>
+

@@ -1,0 +1,231 @@
+{%- liquid
+  assign product = product | default: product_card_product
+  assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+-%}
+
+<div class="product-media" data-product-media>
+  {%- if product.media.size > 0 -%}
+    <div class="product-media__main">
+      {%- for media in product.media -%}
+        <div class="product-media__item {% if forloop.first %}product-media__item--active{% endif %}" data-media-id="{{ media.id }}" data-media-type="{{ media.media_type }}">
+          {%- case media.media_type -%}
+            {%- when 'image' -%}
+              <img
+                src="{{ media | image_url: width: 1200 }}"
+                srcset="{{ media | image_url: width: 600 }} 600w, {{ media | image_url: width: 900 }} 900w, {{ media | image_url: width: 1200 }} 1200w, {{ media | image_url: width: 1800 }} 1800w"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                alt="{{ media.alt | escape }}"
+                class="product-media__image"
+                loading="lazy"
+                width="{{ media.width }}"
+                height="{{ media.height }}"
+                data-media-index="{{ forloop.index0 }}"
+              >
+            {%- when 'video' -%}
+              <div class="product-media__video">
+                {{ media | video_tag: image_size: '1024x', autoplay: false, loop: true, controls: true, muted: false }}
+              </div>
+            {%- when 'external_video' -%}
+              <div class="product-media__external-video">
+                {{ media | external_video_tag }}
+              </div>
+            {%- when 'model' -%}
+              <div class="product-media__model">
+                {{ media | model_viewer_tag: image_size: '1024x', reveal: 'interaction', toggleable: true }}
+              </div>
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if product.media.size > 1 -%}
+      <div class="product-media__thumbs">
+        {%- for media in product.media -%}
+          <button
+            type="button"
+            class="product-media__thumb {% if forloop.first %}product-media__thumb--active{% endif %}"
+            data-thumb-index="{{ forloop.index0 }}"
+            aria-label="View image {{ forloop.index }}"
+          >
+            {%- if media.media_type == 'image' -%}
+              <img
+                src="{{ media | image_url: width: 150 }}"
+                alt="{{ media.alt | escape }}"
+                class="product-media__thumb-image"
+                loading="lazy"
+                width="150"
+                height="{{ 150 | divided_by: media.aspect_ratio | round }}"
+              >
+            {%- else -%}
+              <div class="product-media__thumb-placeholder">
+                {%- if media.media_type == 'video' -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                {%- elsif media.media_type == 'external_video' -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                {%- elsif media.media_type == 'model' -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <div class="product-media__placeholder">
+      {{ 'product-1' | placeholder_svg_tag: 'product-media__placeholder-svg' }}
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .product-media {
+    width: 100%;
+  }
+
+  .product-media__main {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .product-media__item {
+    display: none;
+    width: 100%;
+  }
+
+  .product-media__item--active {
+    display: block;
+  }
+
+  .product-media__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: var(--color-gridiron-black);
+  }
+
+  .product-media__video,
+  .product-media__external-video,
+  .product-media__model {
+    width: 100%;
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+  }
+
+  .product-media__video video,
+  .product-media__external-video iframe,
+  .product-media__model model-viewer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-media__thumbs {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .product-media__thumbs {
+      justify-content: flex-start;
+    }
+  }
+
+  .product-media__thumb {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    background: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color var(--transition-base);
+    overflow: hidden;
+  }
+
+  .product-media__thumb:hover {
+    border-color: var(--color-chrome-silver);
+  }
+
+  .product-media__thumb--active {
+    border-color: var(--color-victory-red);
+  }
+
+  .product-media__thumb:focus-visible {
+    outline: 2px solid var(--color-victory-red);
+    outline-offset: 2px;
+  }
+
+  .product-media__thumb-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-media__thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gridiron-black);
+    color: var(--color-chrome-silver);
+  }
+
+  .product-media__placeholder {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    background-color: var(--color-gridiron-black);
+    border: 1px solid var(--color-chrome-silver);
+  }
+
+  .product-media__placeholder-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+</style>
+
+<script>
+  (function() {
+    const productMedia = document.querySelector('[data-product-media]');
+    if (!productMedia) return;
+
+    const thumbs = productMedia.querySelectorAll('[data-thumb-index]');
+    const items = productMedia.querySelectorAll('[data-media-id]');
+
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const index = parseInt(thumb.dataset.thumbIndex);
+
+        // Update active thumb
+        thumbs.forEach(t => t.classList.remove('product-media__thumb--active'));
+        thumb.classList.add('product-media__thumb--active');
+
+        // Update active media item
+        items.forEach(item => item.classList.remove('product-media__item--active'));
+        if (items[index]) {
+          items[index].classList.add('product-media__item--active');
+        }
+      });
+    });
+  })();
+</script>
+

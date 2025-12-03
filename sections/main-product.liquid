@@ -1,0 +1,343 @@
+{%- liquid
+  assign product = product | default: all_products[section.settings.product]
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<section class="main-product section" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="main-product__wrapper">
+      <!-- Product Media -->
+      <div class="main-product__media">
+        {% render 'product-media', product: product %}
+      </div>
+
+      <!-- Product Info -->
+      <div class="main-product__info">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'title' -%}
+              <div class="main-product__block" {{ block.shopify_attributes }}>
+                <h1 class="main-product__title">{{ product.title }}</h1>
+                {%- if block.settings.show_vendor and product.vendor != blank -%}
+                  <p class="main-product__vendor">{{ product.vendor }}</p>
+                {%- endif -%}
+              </div>
+
+            {%- when 'price' -%}
+              <div class="main-product__block" {{ block.shopify_attributes }}>
+                <div class="main-product__price">
+                  {% render 'product-price', product: product, variant: current_variant %}
+                </div>
+              </div>
+
+            {%- when 'variant_picker' -%}
+              <div class="main-product__block" {{ block.shopify_attributes }}>
+                {% render 'product-form', product: product, block: block %}
+              </div>
+
+            {%- when 'quantity_selector' -%}
+              <div class="main-product__block" {{ block.shopify_attributes }}>
+                <label for="Quantity-{{ section.id }}" class="main-product__quantity-label">
+                  Quantity
+                </label>
+                <div class="main-product__quantity-selector">
+                  <button type="button" class="main-product__quantity-button" data-quantity-decrease aria-label="Decrease quantity">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                  <input
+                    type="number"
+                    id="Quantity-{{ section.id }}"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    class="main-product__quantity-input"
+                    data-quantity-input
+                  >
+                  <button type="button" class="main-product__quantity-button" data-quantity-increase aria-label="Increase quantity">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 3V13M8 13L3 8M8 13L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+            {%- when 'buy_buttons' -%}
+              <div class="main-product__block" {{ block.shopify_attributes }}>
+                {% render 'product-form', product: product, block: block, show_quantity: false %}
+              </div>
+
+            {%- when 'description' -%}
+              <div class="main-product__block main-product__block--description" {{ block.shopify_attributes }}>
+                <div class="main-product__description">
+                  {{ product.description }}
+                </div>
+              </div>
+
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" data-product-json>
+  {{ product | json }}
+</script>
+
+<style>
+  .main-product {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .main-product__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  @media (min-width: 1024px) {
+    .main-product__wrapper {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-2xl);
+    }
+  }
+
+  .main-product__media {
+    width: 100%;
+  }
+
+  .main-product__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .main-product__block {
+    width: 100%;
+  }
+
+  .main-product__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--color-championship-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 var(--spacing-sm) 0;
+    line-height: 1.2;
+  }
+
+  .main-product__vendor {
+    font-size: 0.9375rem;
+    color: var(--color-chrome-silver);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .main-product__price {
+    font-size: 1.5rem;
+  }
+
+  .main-product__quantity-label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-championship-white);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .main-product__quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    max-width: 150px;
+  }
+
+  .main-product__quantity-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid var(--color-chrome-silver);
+    color: var(--color-championship-white);
+    cursor: pointer;
+    transition: all var(--transition-base);
+  }
+
+  .main-product__quantity-button:hover {
+    border-color: var(--color-victory-red);
+    color: var(--color-victory-red);
+  }
+
+  .main-product__quantity-button:focus-visible {
+    outline: 2px solid var(--color-victory-red);
+    outline-offset: 2px;
+  }
+
+  .main-product__quantity-input {
+    flex: 1;
+    text-align: center;
+    padding: var(--spacing-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: transparent;
+    border: 1px solid var(--color-chrome-silver);
+    color: var(--color-championship-white);
+    -moz-appearance: textfield;
+  }
+
+  .main-product__quantity-input::-webkit-outer-spin-button,
+  .main-product__quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .main-product__description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-chrome-silver);
+  }
+
+  .main-product__description h1,
+  .main-product__description h2,
+  .main-product__description h3,
+  .main-product__description h4,
+  .main-product__description h5,
+  .main-product__description h6 {
+    font-family: var(--font-heading);
+    color: var(--color-championship-white);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .main-product__description p {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .main-product__description ul,
+  .main-product__description ol {
+    margin-left: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .main-product__description a {
+    color: var(--color-victory-red);
+    text-decoration: underline;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main product",
+  "tag": "section",
+  "class": "section-main-product",
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "label": "Show vendor",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "picker_type",
+          "label": "Picker type",
+          "options": [
+            {
+              "value": "dropdown",
+              "label": "Dropdown"
+            },
+            {
+              "value": "button",
+              "label": "Buttons"
+            }
+          ],
+          "default": "button"
+        }
+      ]
+    },
+    {
+      "type": "quantity_selector",
+      "name": "Quantity selector",
+      "limit": 1
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "label": "Show dynamic checkout buttons",
+          "default": true,
+          "info": "Using the payment methods available on your store, customers see their preferred option, like PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/theme-structure#dynamic-checkout)"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    }
+  ],
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Select a product to preview. Leave empty to use the current product."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main product",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "price"
+        },
+        {
+          "type": "variant_picker"
+        },
+        {
+          "type": "quantity_selector"
+        },
+        {
+          "type": "buy_buttons"
+        },
+        {
+          "type": "description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,122 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  assign title = section.settings.title
+  assign products_to_show = section.settings.products_to_show | default: 8
+-%}
+
+{%- if collection != blank and collection.products_count > 0 -%}
+  <section class="featured-collection section">
+    <div class="container">
+      {%- if title != blank -%}
+        <div class="featured-collection__header">
+          <h2 class="featured-collection__title">{{ title }}</h2>
+        </div>
+      {%- endif -%}
+
+      <div class="featured-collection__grid">
+        {%- for product in collection.products limit: products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_view_all and collection.products_count > products_to_show -%}
+        <div class="featured-collection__footer">
+          <a href="{{ collection.url }}" class="featured-collection__view-all button button--outline">
+            {{ section.settings.view_all_text | default: 'View all products' }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+<style>
+  .featured-collection {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .featured-collection__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .featured-collection__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--color-championship-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .featured-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  @media (max-width: 639px) {
+    .featured-collection__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+  }
+
+  .featured-collection__footer {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+  }
+
+  .featured-collection__view-all {
+    display: inline-block;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "tag": "section",
+  "class": "section-featured-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "default": 8,
+      "label": "Products to show"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "'View all' button text",
+      "default": "View all products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}
+

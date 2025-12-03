@@ -1,0 +1,144 @@
+{%- liquid
+  assign product_limit = section.settings.products_to_show | default: 4
+  assign heading = section.settings.heading | default: 'You may also like'
+-%}
+
+{%- liquid
+  assign product_limit = section.settings.products_to_show | default: 4
+  assign heading = section.settings.heading | default: 'You may also like'
+  assign recommendations = recommendations.products | default: collections.all.products | limit: product_limit
+-%}
+
+<product-recommendations class="product-recommendations section" data-product-id="{{ product.id }}" data-limit="{{ product_limit }}">
+  <div class="container">
+    {%- if heading != blank -%}
+      <div class="product-recommendations__header">
+        <h2 class="product-recommendations__title">{{ heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="product-recommendations__grid" data-product-recommendations>
+      {%- if recommendations.size > 0 -%}
+        {%- for product in recommendations -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        <div class="product-recommendations__loading">
+          <p>Loading recommendations...</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</product-recommendations>
+
+<style>
+  .product-recommendations {
+    padding: var(--spacing-2xl) 0;
+    border-top: 1px solid var(--color-chrome-silver);
+  }
+
+  .product-recommendations__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .product-recommendations__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--color-championship-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .product-recommendations__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  @media (max-width: 639px) {
+    .product-recommendations__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+  }
+
+  .product-recommendations__loading,
+  .product-recommendations__empty,
+  .product-recommendations__error {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-chrome-silver);
+  }
+
+  .product-recommendations__error {
+    color: var(--color-victory-red);
+  }
+
+  .product-recommendations__grid:not(:empty) .product-recommendations__loading {
+    display: none;
+  }
+</style>
+
+<script>
+  class ProductRecommendations extends HTMLElement {
+    constructor() {
+      super();
+      const productId = this.dataset.productId;
+      const limit = this.dataset.limit || 4;
+      const recommendationsUrl = `/recommendations/products?section_id={{ section.id }}&product_id=${productId}&limit=${limit}`;
+
+      fetch(recommendationsUrl)
+        .then(response => response.text())
+        .then(text => {
+          const html = document.createElement('div');
+          html.innerHTML = text;
+          const recommendationsGrid = html.querySelector('[data-product-recommendations]');
+          if (recommendationsGrid && recommendationsGrid.innerHTML.trim().length) {
+            this.querySelector('[data-product-recommendations]').innerHTML = recommendationsGrid.innerHTML;
+          } else {
+            this.querySelector('[data-product-recommendations]').innerHTML = '<p class="product-recommendations__empty">No recommendations available.</p>';
+          }
+        })
+        .catch(e => {
+          console.error('Error loading product recommendations:', e);
+          this.querySelector('[data-product-recommendations]').innerHTML = '<p class="product-recommendations__error">Unable to load recommendations.</p>';
+        });
+    }
+  }
+
+  customElements.define('product-recommendations', ProductRecommendations);
+</script>
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "tag": "section",
+  "class": "section-product-recommendations",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product recommendations"
+    }
+  ]
+}
+{% endschema %}
+
