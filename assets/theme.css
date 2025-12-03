@@ -5,11 +5,16 @@
 
 /* CSS Variables - Premium Design System */
 :root {
-  /* Primary Colors */
-  --color-teal-600: #0d9488;
-  --color-teal-700: #0f766e;
-  --color-blue-600: #2563eb;
-  --color-blue-700: #1d4ed8;
+  /* Primary Colors - Gold Accent System */
+  --color-gold: #FFD700;
+  --color-gold-dark: #D4AF37;
+  --color-gold-light: #FFED4E;
+  
+  /* Legacy teal/blue for compatibility */
+  --color-teal-600: #FFD700;
+  --color-teal-700: #D4AF37;
+  --color-blue-600: #FFD700;
+  --color-blue-700: #D4AF37;
   
   /* Dark Mode Neutrals */
   --color-gray-900: #111827;
@@ -90,14 +95,15 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 30px rgba(13, 148, 136, 0.4);
-  --shadow-glow-lg: 0 0 50px rgba(13, 148, 136, 0.5);
+  --shadow-glow: 0 0 30px rgba(255, 215, 0, 0.4);
+  --shadow-glow-lg: 0 0 50px rgba(255, 215, 0, 0.5);
 
-  /* Premium Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--color-teal-600) 0%, var(--color-blue-600) 100%);
-  --gradient-primary-hover: linear-gradient(135deg, var(--color-teal-700) 0%, var(--color-blue-700) 100%);
+  /* Premium Gradients - Gold System */
+  --gradient-primary: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+  --gradient-primary-hover: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 100%);
   --gradient-overlay: linear-gradient(180deg, rgba(17, 24, 39, 0) 0%, rgba(17, 24, 39, 0.8) 100%);
   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --gradient-gold-text: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
 
   /* Premium Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -165,7 +171,11 @@ h1 {
   font-size: clamp(2.5rem, 8vw, 5.5rem);
   font-weight: var(--font-weight-extrabold);
   letter-spacing: -0.04em;
-  background: var(--gradient-primary);
+  color: var(--color-white);
+}
+
+h1 .gold-text {
+  background: var(--gradient-gold-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -208,7 +218,7 @@ p {
 }
 
 a {
-  color: var(--color-teal-600);
+  color: var(--color-gold);
   text-decoration: none;
   transition: all var(--transition-fast);
   font-weight: var(--font-weight-medium);
@@ -216,11 +226,11 @@ a {
 }
 
 a:hover {
-  color: var(--color-teal-700);
+  color: var(--color-gold-light);
 }
 
 a:focus-visible {
-  outline: 2px solid var(--color-teal-600);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
@@ -398,9 +408,9 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: var(--color-teal-600);
+  border-color: var(--color-gold);
   background-color: rgba(31, 41, 55, 0.9);
-  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15), var(--shadow-lg);
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.15), var(--shadow-lg);
 }
 
 input::placeholder,
@@ -542,7 +552,7 @@ select {
   height: 24px;
   margin: -12px 0 0 -12px;
   border: 3px solid rgba(55, 65, 81, 0.3);
-  border-top-color: var(--color-teal-600);
+  border-top-color: var(--color-gold);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
