@@ -1,0 +1,92 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "SportsLiveDecals",
+    "theme_version": "1.0.0",
+    "theme_author": "SportsLiveDecals",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_gridiron_black",
+        "label": "Gridiron Black",
+        "default": "#0A0A0A"
+      },
+      {
+        "type": "color",
+        "id": "color_championship_white",
+        "label": "Championship White",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_victory_red",
+        "label": "Victory Red",
+        "default": "#E10824"
+      },
+      {
+        "type": "color",
+        "id": "color_field_turf_green",
+        "label": "Field Turf Green",
+        "default": "#1A8F3B"
+      },
+      {
+        "type": "color",
+        "id": "color_skyline_blue",
+        "label": "Skyline Blue",
+        "default": "#0067C8"
+      },
+      {
+        "type": "color",
+        "id": "color_chrome_silver",
+        "label": "Chrome Silver",
+        "default": "#C8CCD0"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading font",
+        "default": "anton_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body font",
+        "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https://www.facebook.com/yourpage"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://www.instagram.com/yourpage"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https://www.twitter.com/yourpage"
+      }
+    ]
+  }
+]
+

@@ -1,0 +1,33 @@
+{
+  "current": {
+    "colors": {
+      "color_gridiron_black": {
+        "value": "#0A0A0A"
+      },
+      "color_championship_white": {
+        "value": "#FFFFFF"
+      },
+      "color_victory_red": {
+        "value": "#E10824"
+      },
+      "color_field_turf_green": {
+        "value": "#1A8F3B"
+      },
+      "color_skyline_blue": {
+        "value": "#0067C8"
+      },
+      "color_chrome_silver": {
+        "value": "#C8CCD0"
+      }
+    },
+    "typography": {
+      "type_header_font": {
+        "value": "anton_n4"
+      },
+      "type_body_font": {
+        "value": "inter_n4"
+      }
+    }
+  }
+}
+
