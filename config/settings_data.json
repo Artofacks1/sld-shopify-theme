@@ -1,23 +1,32 @@
 {
   "current": {
     "colors": {
-      "color_gridiron_black": {
-        "value": "#0A0A0A"
+      "color_teal_600": {
+        "value": "#0d9488"
       },
-      "color_championship_white": {
-        "value": "#FFFFFF"
+      "color_teal_700": {
+        "value": "#0f766e"
       },
-      "color_victory_red": {
-        "value": "#E10824"
+      "color_blue_600": {
+        "value": "#2563eb"
       },
-      "color_field_turf_green": {
-        "value": "#1A8F3B"
+      "color_blue_700": {
+        "value": "#1d4ed8"
       },
-      "color_skyline_blue": {
-        "value": "#0067C8"
+      "color_gray_900": {
+        "value": "#111827"
       },
-      "color_chrome_silver": {
-        "value": "#C8CCD0"
+      "color_gray_800": {
+        "value": "#1f2937"
+      },
+      "color_gray_700": {
+        "value": "#374151"
+      },
+      "color_gray_300": {
+        "value": "#d1d5db"
+      },
+      "color_white": {
+        "value": "#ffffff"
       }
     },
     "typography": {

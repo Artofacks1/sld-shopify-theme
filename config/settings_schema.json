@@ -11,40 +11,66 @@
     "name": "Colors",
     "settings": [
       {
-        "type": "color",
-        "id": "color_gridiron_black",
-        "label": "Gridiron Black",
-        "default": "#0A0A0A"
+        "type": "header",
+        "content": "Primary Colors"
       },
       {
         "type": "color",
-        "id": "color_championship_white",
-        "label": "Championship White",
-        "default": "#FFFFFF"
+        "id": "color_teal_600",
+        "label": "Teal 600 (Primary actions, CTAs)",
+        "default": "#0d9488"
       },
       {
         "type": "color",
-        "id": "color_victory_red",
-        "label": "Victory Red",
-        "default": "#E10824"
+        "id": "color_teal_700",
+        "label": "Teal 700 (Hover states)",
+        "default": "#0f766e"
       },
       {
         "type": "color",
-        "id": "color_field_turf_green",
-        "label": "Field Turf Green",
-        "default": "#1A8F3B"
+        "id": "color_blue_600",
+        "label": "Blue 600 (Gradients, accents)",
+        "default": "#2563eb"
       },
       {
         "type": "color",
-        "id": "color_skyline_blue",
-        "label": "Skyline Blue",
-        "default": "#0067C8"
+        "id": "color_blue_700",
+        "label": "Blue 700 (Deep accents)",
+        "default": "#1d4ed8"
+      },
+      {
+        "type": "header",
+        "content": "Dark Mode Neutrals"
       },
       {
         "type": "color",
-        "id": "color_chrome_silver",
-        "label": "Chrome Silver",
-        "default": "#C8CCD0"
+        "id": "color_gray_900",
+        "label": "Gray 900 (Background)",
+        "default": "#111827"
+      },
+      {
+        "type": "color",
+        "id": "color_gray_800",
+        "label": "Gray 800 (Surface)",
+        "default": "#1f2937"
+      },
+      {
+        "type": "color",
+        "id": "color_gray_700",
+        "label": "Gray 700 (Borders)",
+        "default": "#374151"
+      },
+      {
+        "type": "color",
+        "id": "color_gray_300",
+        "label": "Gray 300 (Secondary text)",
+        "default": "#d1d5db"
+      },
+      {
+        "type": "color",
+        "id": "color_white",
+        "label": "White (Primary text)",
+        "default": "#ffffff"
       }
     ]
   },

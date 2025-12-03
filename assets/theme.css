@@ -2,15 +2,28 @@
    SportsLiveDecals Theme - Base Styles
    ============================================ */
 
-/* CSS Variables - Brand Color Palette */
+/* CSS Variables - Design System Color Palette */
 :root {
-  /* Brand Colors */
-  --color-gridiron-black: #0A0A0A;
-  --color-championship-white: #FFFFFF;
-  --color-victory-red: #E10824;
-  --color-field-turf-green: #1A8F3B;
-  --color-skyline-blue: #0067C8;
-  --color-chrome-silver: #C8CCD0;
+  /* Primary Colors */
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  
+  /* Dark Mode Neutrals */
+  --color-gray-900: #111827;
+  --color-gray-800: #1f2937;
+  --color-gray-700: #374151;
+  --color-gray-300: #d1d5db;
+  --color-white: #ffffff;
+  
+  /* Legacy color mappings for compatibility */
+  --color-gridiron-black: var(--color-gray-900);
+  --color-championship-white: var(--color-white);
+  --color-victory-red: var(--color-teal-600);
+  --color-field-turf-green: var(--color-teal-700);
+  --color-skyline-blue: var(--color-blue-600);
+  --color-chrome-silver: var(--color-gray-300);
 
   /* Typography */
   --font-heading: 'Anton', sans-serif;
@@ -58,8 +71,8 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--color-championship-white);
-  background-color: var(--color-gridiron-black);
+  color: var(--color-white);
+  background-color: var(--color-gray-900);
   overflow-x: hidden;
 }
 
@@ -77,7 +90,7 @@ h6 {
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: var(--spacing-md);
-  color: var(--color-championship-white);
+  color: var(--color-white);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -111,17 +124,17 @@ p {
 }
 
 a {
-  color: var(--color-victory-red);
+  color: var(--color-teal-600);
   text-decoration: none;
   transition: color var(--transition-base);
 }
 
 a:hover {
-  color: var(--color-championship-white);
+  color: var(--color-teal-700);
 }
 
 a:focus-visible {
-  outline: 2px solid var(--color-victory-red);
+  outline: 2px solid var(--color-teal-600);
   outline-offset: 2px;
 }
 
@@ -141,9 +154,9 @@ input[type="button"] {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-championship-white);
-  background-color: var(--color-victory-red);
-  border: 2px solid var(--color-victory-red);
+  color: var(--color-white);
+  background-color: var(--color-teal-600);
+  border: 2px solid var(--color-teal-600);
   border-radius: 0;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -155,40 +168,40 @@ input[type="button"] {
 button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  background-color: transparent;
-  color: var(--color-victory-red);
-  border-color: var(--color-victory-red);
+  background-color: var(--color-teal-700);
+  border-color: var(--color-teal-700);
+  color: var(--color-white);
 }
 
 .button:focus-visible,
 button:focus-visible,
 input[type="submit"]:focus-visible,
 input[type="button"]:focus-visible {
-  outline: 2px solid var(--color-victory-red);
+  outline: 2px solid var(--color-teal-600);
   outline-offset: 2px;
 }
 
 .button--secondary {
   background-color: transparent;
-  color: var(--color-championship-white);
-  border-color: var(--color-chrome-silver);
+  color: var(--color-white);
+  border-color: var(--color-gray-700);
 }
 
 .button--secondary:hover {
-  background-color: var(--color-chrome-silver);
-  color: var(--color-gridiron-black);
-  border-color: var(--color-chrome-silver);
+  background-color: var(--color-gray-800);
+  color: var(--color-white);
+  border-color: var(--color-gray-700);
 }
 
 .button--outline {
   background-color: transparent;
-  color: var(--color-victory-red);
-  border-color: var(--color-victory-red);
+  color: var(--color-teal-600);
+  border-color: var(--color-teal-600);
 }
 
 .button--outline:hover {
-  background-color: var(--color-victory-red);
-  color: var(--color-championship-white);
+  background-color: var(--color-teal-600);
+  color: var(--color-white);
 }
 
 /* ============================================
@@ -207,9 +220,9 @@ select {
   padding: var(--spacing-sm);
   font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--color-championship-white);
-  background-color: var(--color-gridiron-black);
-  border: 1px solid var(--color-chrome-silver);
+  color: var(--color-white);
+  background-color: var(--color-gray-800);
+  border: 1px solid var(--color-gray-700);
   border-radius: 0;
   transition: border-color var(--transition-base);
   -webkit-appearance: none;
@@ -220,12 +233,12 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: var(--color-victory-red);
+  border-color: var(--color-teal-600);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--color-chrome-silver);
+  color: var(--color-gray-300);
   opacity: 1;
 }
 
@@ -251,8 +264,8 @@ textarea::placeholder {
   left: 0;
   z-index: 9999;
   padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--color-victory-red);
-  color: var(--color-championship-white);
+  background-color: var(--color-teal-600);
+  color: var(--color-white);
 }
 
 .skip-to-content-link:focus {
