@@ -57,7 +57,7 @@
           <div class="product-card__price">
             {% render 'product-price', product: product %}
           </div>
-          <a href="{{ product.url }}" class="product-card__view-details">VIEW DETAILS</a>
+          <a href="{{ product.url }}" class="product-card__view-details">VIEW DETAILS <span class="product-card__view-details-arrow">></span></a>
         </div>
       </div>
     </a>
@@ -297,10 +297,22 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     transition: color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
   }
 
   .product-card__view-details:hover {
     color: var(--color-gold-light);
+  }
+
+  .product-card__view-details-arrow {
+    font-size: var(--font-size-base);
+    transition: transform var(--transition-fast);
+  }
+
+  .product-card__view-details:hover .product-card__view-details-arrow {
+    transform: translateX(4px);
   }
 
   .product-card__quick-add {
